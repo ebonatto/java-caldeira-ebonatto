@@ -6,7 +6,7 @@ public class Exercicio01 {
         Scanner sc = new Scanner(System.in);
         System.out.println("What's your name?");
         // Get text typed on the terminal
-        String name = sc.next();
+        String name = sc.nextLine();
         System.out.printf("Hello %s!", name);
     }
 }
