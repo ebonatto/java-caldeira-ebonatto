@@ -8,7 +8,7 @@ public class Exercicio04 {
         System.out.printf("Salário Mínimo: R$ %.2f\n", salarioMinimo);
         System.out.print("Qual seu salário? ");
         double salarioInput = Double.parseDouble(sc.next());
-        double salarioPerc = salarioInput/salarioMinimo;
+        double salarioPerc = salarioInput / salarioMinimo;
 
         System.out.printf("\nVocê ganha %.2f salários mínimos!", salarioPerc);
     }
