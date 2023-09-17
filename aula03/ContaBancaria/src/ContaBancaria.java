@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Scanner;
 
 public class ContaBancaria {
     private String nome;
@@ -11,8 +12,9 @@ public class ContaBancaria {
     private String banco;
     private String endereco;
     private double saldo = 0;
-    public Date horarioAtual;
+    private Date horarioAtual;
     private List<String> extrato = new ArrayList<>();
+    private boolean aberta = true;
 
     public ContaBancaria(String nome, String cpf, String banco, String endereco) {
         if (validaCPF(cpf)) {
@@ -75,26 +77,46 @@ public class ContaBancaria {
     }
 
     public boolean saque(double valor) {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return false;
+        }
         if (this.saldo >= valor) {
             this.saldo -= valor;
             geraEntradaExtrato("Saque", valor);
             return true;
         } else {
             System.out.println("Saldo insuficiente!");
+            this.verificarSaldo();
             return false;
         }
     }
 
     public void deposito(double valor) {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         this.saldo += valor;
         this.geraEntradaExtrato("Depósito", valor);
     }
 
     public void pix(double valor) {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         this.saque(valor);
     }
 
     public void transferencia(ContaBancaria destino, double valor) {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        } else if (!destino.aberta) {
+            System.out.println("Conta de destino fechada!");
+            return;
+        }
         if (this.saque(valor)) {
             return;
         }
@@ -109,21 +131,32 @@ public class ContaBancaria {
     }
 
     public void verificarSaldo() {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         System.out.printf("Saldo atual: R$ %.2f\n", this.saldo);
     }
 
     public void verificarHorario() {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         atualizaHorario();
         System.out.printf("Horario atual: %s\n", formatter.format(this.horarioAtual));
     }
 
-    public void atualizaHorario() {
+    private void atualizaHorario() {
         this.horarioAtual = new Date();
-        taxaManutencao();
     }
 
     public void verificarInformacoes() {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         System.out.printf("Nome: %s\n" +
                         "CPF: %s\n" +
                         "Saldo: %.2f\n" +
@@ -135,6 +168,10 @@ public class ContaBancaria {
     }
 
     private void geraEntradaExtrato(String operacao, double valor, ContaBancaria conta) {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
         atualizaHorario();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         extrato.add(String.format("%s - %s: %.2f, para %s", formatter.format(this.horarioAtual), operacao, valor, conta.nome));
@@ -147,7 +184,13 @@ public class ContaBancaria {
     }
 
     public void verificarExtrato() {
-        System.out.println("=============== Extrato ===============");
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
+
+        System.out.println("\n=============== Extrato ===============");
+        System.out.printf("ID da Conta: %d - Titular: %s\n", this.identificadorConta, this.nome);
         for (int i = 0; i < this.extrato.size(); i++) {
             System.out.println(extrato.get(i));
         }
@@ -155,14 +198,40 @@ public class ContaBancaria {
     }
 
     public void alterarEndereco(String novoEndereco) {
-        this.endereco = novoEndereco;
-        System.out.println("Endereço alterado!");
-    }
-
-    private void taxaManutencao() {
-        double taxa = 2.50;
-        if(horarioAtual.getDay() == 1) {
-            this.saldo -= taxa;
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
+        if (novoEndereco.length() > 0) {
+            this.endereco = novoEndereco;
+            System.out.println("Endereço alterado!");
+        } else {
+            System.out.println("Endereço Inválido");
         }
     }
+
+    public void fechaConta() {
+        if (!this.aberta) {
+            System.out.println("Conta fechada!");
+            return;
+        }
+
+        Scanner sc = new Scanner(System.in);
+
+        String sim = "Ss";
+        String nao = "Nn";
+        String resposta = "";
+        do {
+            System.out.print("Tem certeza que deseja encerrar sua conta? (S/N) ");
+            resposta = sc.nextLine();
+            if (!sim.contains(resposta) && !nao.contains(resposta)) {
+                System.out.println("Entrada inválida!");
+            }
+        } while (!sim.contains(resposta) && !nao.contains(resposta));
+        if (sim.contains(resposta)) {
+            this.aberta = false;
+            System.out.println("A conta foi encerrada!");
+        }
+    }
+
 }
