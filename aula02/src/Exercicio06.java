@@ -18,5 +18,6 @@ public class Exercicio06 {
         for (char c : charArrReversed) {
             System.out.print(c);
         }
+        sc.close();
     }
 }
