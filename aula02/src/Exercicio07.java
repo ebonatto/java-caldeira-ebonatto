@@ -18,5 +18,6 @@ public class Exercicio07 {
         } while (guess != 300000);
 
         System.out.println("Isso mesmo! Vamos para guerra!");
+        sc.close();
     }
 }
