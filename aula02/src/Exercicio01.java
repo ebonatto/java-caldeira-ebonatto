@@ -46,5 +46,6 @@ public class Exercicio01 {
                 System.out.printf("%d\n", listaPrimos.get(i));
             }
         }
+        sc.close();
     }
 }
