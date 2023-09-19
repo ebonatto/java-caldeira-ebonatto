@@ -14,5 +14,6 @@ public class Exercicio05 {
 
         System.out.printf("Primeira metade da frase:\n%s", str1);
 
+        sc.close();
     }
 }
