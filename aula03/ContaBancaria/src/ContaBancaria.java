@@ -121,11 +121,11 @@ public class ContaBancaria {
             return;
         }
         atualizaHorario();
-//        if (this.horarioAtual.getHours() < 8 || this.horarioAtual.getHours() > 19) {
-//            System.out.println("Fora do horário! Transferências só podem ocorrer das 8h às 19h!");
-//            verificarHorario();
-//            return;
-//        }
+        if (this.horarioAtual.getHours() < 8 || this.horarioAtual.getHours() > 19) {
+            System.out.println("Fora do horário! Transferências só podem ocorrer das 8h às 19h!");
+            verificarHorario();
+            return;
+        }
         destino.deposito(valor);
         this.geraEntradaExtrato(">>Tranferência", valor, destino);
     }
