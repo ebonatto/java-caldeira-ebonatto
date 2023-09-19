@@ -234,4 +234,26 @@ public class ContaBancaria {
         }
     }
 
+//    public void menu() {
+//        atualizaHorario();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        String horario = formatter.format(this.horarioAtual);
+//        Scanner sc = new Scanner(System.in);
+//        int opcao = 0;
+//        do {
+//            System.out.printf("\n===== %s =====\n" +
+//                    "%s" +
+//                    "1- Saque   2- Depósito   3-Pix\n" +
+//                    "4- Transferência  5- Ver Saldo\n" +
+//                    "6- Ver Horário    7- Ver Infos\n" +
+//                    "8- Extrato 9- Alterar Endereço\n" +
+//                    "10- Fechar Conta       0- Sair\n" +
+//                    "===================");
+//            opcao = sc.nextInt();
+//            if (opcao < 0 || opcao > 10) {
+//                System.out.println("Entrada inválida!");
+//            }
+//        } while (opcao != 0);
+//    }
+
 }
