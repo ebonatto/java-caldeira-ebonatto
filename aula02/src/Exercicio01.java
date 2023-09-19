@@ -24,16 +24,8 @@ public class Exercicio01 {
         List<Integer> listaPrimos = new ArrayList<Integer>();
 
         System.out.println("Números primos:");
-        boolean primo = false;
         for (int n = nInicial; n < nFinal; n++) {
-            primo = true;
-            for (int i = 2; i < n; i++) {
-                if (n%i == 0) {
-                    primo = false;
-                    break;
-                }
-            }
-            if(primo && n != 1) {
+            if (ehPrimo(n)) {
                 listaPrimos.add(n);
             }
         }
@@ -47,5 +39,17 @@ public class Exercicio01 {
             }
         }
         sc.close();
+    }
+
+    public static boolean ehPrimo(int n) {
+        if (n < 2) {
+            return false;
+        }
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
