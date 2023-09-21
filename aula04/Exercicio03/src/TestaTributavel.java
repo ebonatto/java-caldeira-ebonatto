@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestaTributavel {
     public static void main(String[] args) {
         Conta corrente = new ContaCorrente("Du");
@@ -9,5 +12,14 @@ public class TestaTributavel {
         System.out.println("Tributo conta corrente: R$ " + corrente.calculaTributos());
         System.out.println("Tributo conta poupanca: R$ " + poupanca.calculaTributos());
         System.out.println("Tributo Seguro de Vida: R$ " + seguroVida.calculaTributos());
+
+        List<Tributavel> contas = new ArrayList<>();
+        contas.add(corrente);
+        contas.add(seguroVida);
+        GerenciadorDeImpostoDeRenda gerenciador = new GerenciadorDeImpostoDeRenda(contas);
+        gerenciador.getTributaveis();
+
+        System.out.println(gerenciador);
+
     }
 }

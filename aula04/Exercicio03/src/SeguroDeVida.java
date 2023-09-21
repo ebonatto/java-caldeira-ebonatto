@@ -5,4 +5,9 @@ public class SeguroDeVida implements Tributavel{
     public double calculaTributos() {
         return 42;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Seguro de Vida");
+    }
 }
