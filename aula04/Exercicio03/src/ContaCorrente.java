@@ -5,6 +5,6 @@ public class ContaCorrente extends Conta{
 
     @Override
     public double calculaTributos() {
-        return 42+(obterSaldo()*0.01);
+        return obterSaldo()*0.01;
     }
 }

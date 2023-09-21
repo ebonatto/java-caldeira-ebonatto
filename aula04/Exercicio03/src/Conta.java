@@ -20,13 +20,14 @@ public abstract class Conta implements Tributavel{
             System.out.printf("Saldo restante: R$ %.2f\n");
             return true;
         } else {
-            System.out.printf("Saldo insuficiente! Saldo atual: R$ %.2f\n", this.saldo);
+            System.out.printf("Saldo insuficiente! Saldo atual: R$ %.2f\n", obterSaldo());
             return false;
         }
     }
 
     public void deposito(double valor) {
         this.saldo += valor;
+        System.out.printf("Depósito efetuado! Saldo atual: R$ %.2f\n", obterSaldo());
     }
 
 
