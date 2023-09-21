@@ -3,8 +3,11 @@ import java.util.List;
 
 public class GerenciadorDeImpostoDeRenda {
     private double totalTributos = 0;
-    private List<Tributavel> tributaveis = new ArrayList<>();
+    private List<Tributavel> tributaveis;
 
+    public GerenciadorDeImpostoDeRenda() {
+        tributaveis = new ArrayList<>();
+    };
     public GerenciadorDeImpostoDeRenda(List<Tributavel> tributaveis) {
         this.tributaveis = tributaveis;
     }
@@ -22,6 +25,11 @@ public class GerenciadorDeImpostoDeRenda {
 
     public void getTributaveis() {
         System.out.println(tributaveis);
+    }
+
+    public void adicionar(Tributavel tributavel) {
+        tributaveis.add(tributavel);
+        somaTributos();
     }
 
     @Override

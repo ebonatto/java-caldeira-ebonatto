@@ -21,5 +21,10 @@ public class TestaTributavel {
 
         System.out.println(gerenciador);
 
+        GerenciadorDeImpostoDeRenda gerenciadorDeImpostoDeRenda = new GerenciadorDeImpostoDeRenda();
+
+        gerenciadorDeImpostoDeRenda.adicionar(seguroVida);
+        System.out.println(gerenciadorDeImpostoDeRenda.getTotalTributos());
+
     }
 }
