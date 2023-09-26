@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,8 +10,11 @@ public class Exercicio03 {
     public static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     public static void main(String[] args) {
-        List<String> tasks = new ArrayList<>();
-        String task;
+        List<Task> tasks = new ArrayList<>();
+        String title;
+        String date;
+        String description;
+        Task task;
         int option;
         do {
             System.out.println("\n1- Adicionar tarefa\n" +
@@ -22,9 +26,17 @@ public class Exercicio03 {
 
             switch (option) {
                 case (1) -> {
-                    System.out.print("Qual tarefa quer adicionar? ");
                     sc.nextLine(); // Necessário para "consumir" um \n que sobra do nextInt do option = sc.nextInt();
-                    task = sc.nextLine();
+                    System.out.print("Crie uma tarefa");
+                    do {
+                        System.out.print("Data: ");
+                        date = sc.nextLine();
+                    } while (!Task.validDate(date));
+                    System.out.print("Titulo: ");
+                    title = sc.nextLine();
+                    System.out.print("Descrição: ");
+                    description = sc.nextLine();
+                    task = new Task(title, date, description);
                     if (!task.isEmpty()) {
                         tasks.add(task);
                         System.out.println("Tarefa adicionada!");
@@ -45,33 +57,7 @@ public class Exercicio03 {
         } while (option != 0);
     }
 
-    public class Tarefa {
-        String titulo;
-        Date data;
-        String descricao;
 
-//        public Tarefa(String titulo, String data, String descricao) {
-//            Date.
-//        }
-
-        public String getDescricao() {
-            return descricao;
-        }
-
-        public void setDescricao(String descricao) {
-            this.descricao = descricao;
-        }
-
-        public String getTitulo() {
-            return titulo;
-        }
-
-        public void setTitulo(String titulo) {
-            this.titulo = titulo;
-        }
-
-
-    }
 
     public static boolean showList(List<String> list) {
         if (list.isEmpty()) {
