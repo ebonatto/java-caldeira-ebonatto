@@ -1,9 +1,11 @@
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Task {
-    String title;
-    String date;
-    String description;
+    public String title;
+    public String date;
+    public String description;
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     public Task(String title, String date, String description) {
         if (validDate(date)) {
@@ -23,19 +25,29 @@ public class Task {
         return true;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        if (validDate(date)) {
+            this.date = date;
+        }
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
