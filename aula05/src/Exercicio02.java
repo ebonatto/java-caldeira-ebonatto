@@ -9,7 +9,7 @@ public class Exercicio02 {
         int[] integers = new int[10];
 
         for (int i = 0; i < integers.length; i++) {
-            integers[i] = rand.nextInt(101);
+            integers[i] = 1 + rand.nextInt(100);
         }
 
         System.out.printf("Digite um número: ");
