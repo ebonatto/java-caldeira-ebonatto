@@ -8,7 +8,7 @@ public class Main {
         products.put("Frango", 16.90);
         products.put("Arroz", 7.50);
         products.put("Vassoura", 14.99);
-        
+
         printProducts(products);
 
     }
