@@ -23,7 +23,7 @@ public class ContaBancaria {
         this.name = name;
     }
 
-    public double setBalance() {
+    public double getBalance() {
         return balance;
     }
 
