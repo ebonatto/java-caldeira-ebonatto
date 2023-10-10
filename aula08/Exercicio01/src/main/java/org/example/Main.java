@@ -37,6 +37,7 @@ public class Main {
         /* Cria uma lista ordenada de forma decrescente pela quantidade de vezes que as string aparecem
         > .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
             >> Cria um comparador que se baseia nos valores das entradas do Map
+            >> <String, Long>: garante que o entry é uma string e um long
             >> .reversed(): torna a lista decrescente
         */
         List<Map.Entry<String,Long>> orderedList = occurrencesWords.entrySet().stream()
