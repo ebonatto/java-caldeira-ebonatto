@@ -60,9 +60,7 @@ public class CalculadoraTest {
     void divisaoPorZero() {
         Calculadora calculadora = new Calculadora();
 
-        Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> {
-            calculadora.divisao(6, 0);
-        });
+        Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> calculadora.divisao(6, 0));
         String expectedMessage = "Divisao por zero!";
         String exceptionMessage = exception.getMessage();
 
@@ -86,9 +84,7 @@ public class CalculadoraTest {
     void raizQuadradaNegativa() {
         Calculadora calculadora = new Calculadora();
 
-        Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> {
-            calculadora.raizQuadrada(-666);
-        });
+        Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> calculadora.raizQuadrada(-666));
         String expectedMessage = "Raiz de numero negativo!";
         String exceptionMessage = exception.getMessage();
 
