@@ -103,4 +103,17 @@ public class CalculadoraTest {
         Assertions.assertEquals(3375, potencia2);
         Assertions.assertEquals(1604852.33, potencia3);
     }
+
+    @Test
+    void calculaHipoteca() {
+        Calculadora calculadora = new Calculadora();
+
+        double hipoteca1 = calculadora.calculaHipoteca(15000, 6, 1);
+        double hipoteca2 = calculadora.calculaHipoteca(126709, 15, 3);
+        double hipoteca3 = calculadora.calculaHipoteca(777777, 7, 7);
+
+        Assertions.assertEquals(1325, hipoteca1);
+        Assertions.assertEquals(4047.55, hipoteca2);
+        Assertions.assertEquals(9907.4, hipoteca3);
+    }
 }
