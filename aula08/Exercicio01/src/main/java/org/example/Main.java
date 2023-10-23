@@ -44,6 +44,7 @@ public class Main {
                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed()).toList();
         for (int i = 0; i < 5; i++) {
             Map.Entry<String,Long> word = orderedList.get(i);
+            System.out.println(word);
             System.out.printf("%dº- %s: %d\n", i+1, word.getKey(), word.getValue());
         }
     }
