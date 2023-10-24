@@ -7,11 +7,11 @@ public class OperacaoNumeroTest {
     @Test
     void somaNumerosPositivos() {
         OperacaoNumero operacaoNumero = new OperacaoNumero();
-        int[] nPositivos1 = {1,3,5,7};
+        int[] nPositivos1 = {1, 3, 5, 7};
         int soma1 = operacaoNumero.somarNumeros(nPositivos1);
-        int[] nPositivos2 = {15,20,100};
+        int[] nPositivos2 = {15, 20, 100};
         int soma2 = operacaoNumero.somarNumeros(nPositivos2);
-        int[] nPositivos3 = {1,1,1,1};
+        int[] nPositivos3 = {1, 1, 1, 1};
         int soma3 = operacaoNumero.somarNumeros(nPositivos3);
 
         Assertions.assertEquals(16, soma1);
@@ -22,11 +22,11 @@ public class OperacaoNumeroTest {
     @Test
     void somaNumerosNegativos() {
         OperacaoNumero operacaoNumero = new OperacaoNumero();
-        int[] nNegativos1 = {-1,-3,-5,-7};
+        int[] nNegativos1 = {-1, -3, -5, -7};
         int soma1 = operacaoNumero.somarNumeros(nNegativos1);
-        int[] nNegativos2 = {-15,-20,-100};
+        int[] nNegativos2 = {-15, -20, -100};
         int soma2 = operacaoNumero.somarNumeros(nNegativos2);
-        int[] nNegativos3 = {-1,-1,-1,-1};
+        int[] nNegativos3 = {-1, -1, -1, -1};
         int soma3 = operacaoNumero.somarNumeros(nNegativos3);
 
         Assertions.assertEquals(-16, soma1);
@@ -130,5 +130,37 @@ public class OperacaoNumeroTest {
         OperacaoNumero operacaoNumero = new OperacaoNumero();
 
         Assertions.assertTrue(operacaoNumero.ehPalindromo(""));
+    }
+
+    @Test
+    void calcularFibonacciNegativo() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            operacaoNumero.calcularFibonacci(-1);
+        });
+    }
+
+    @Test
+    void calcularFibonacciZero() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertEquals(0, operacaoNumero.calcularFibonacci(0));
+    }
+
+    @Test
+    void calcularFibonacciUm() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertEquals(1, operacaoNumero.calcularFibonacci(1));
+    }
+
+    @Test
+    void calcularFibonacciNesimo() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertEquals(5, operacaoNumero.calcularFibonacci(5));
+        Assertions.assertEquals(55, operacaoNumero.calcularFibonacci(10));
+        Assertions.assertEquals(377, operacaoNumero.calcularFibonacci(14));
     }
 }
