@@ -69,4 +69,35 @@ public class OperacaoNumeroTest {
         Assertions.assertFalse(operacaoNumero.ehPar(impar2));
         Assertions.assertFalse(operacaoNumero.ehPar(impar3));
     }
+
+    @Test
+    void calcularFatorialPositivos() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        int n1 = 5;
+        int n2 = 10;
+        int n3 = 3;
+
+        Assertions.assertEquals(120, operacaoNumero.calcularFatorial(n1));
+        Assertions.assertEquals(3628800, operacaoNumero.calcularFatorial(n2));
+        Assertions.assertEquals(6, operacaoNumero.calcularFatorial(n3));
+    }
+
+    @Test
+    void calcularFatorialNegativo() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            operacaoNumero.calcularFatorial(-5);
+        });
+    }
+
+    @Test
+    void calcularFatorialZero() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertEquals(1, operacaoNumero.calcularFatorial(0));
+    }
+
+
 }
