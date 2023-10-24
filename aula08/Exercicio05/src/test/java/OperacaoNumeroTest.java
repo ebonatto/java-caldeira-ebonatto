@@ -43,4 +43,30 @@ public class OperacaoNumeroTest {
 
         Assertions.assertEquals(0, soma);
     }
+
+    @Test
+    void ehParPares() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        int par1 = 2;
+        int par2 = -31234;
+        int par3 = 0;
+
+        Assertions.assertTrue(operacaoNumero.ehPar(par1));
+        Assertions.assertTrue(operacaoNumero.ehPar(par2));
+        Assertions.assertTrue(operacaoNumero.ehPar(par3));
+    }
+
+    @Test
+    void ehParImpares() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        int impar1 = 21;
+        int impar2 = -312341;
+        int impar3 = 1;
+
+        Assertions.assertFalse(operacaoNumero.ehPar(impar1));
+        Assertions.assertFalse(operacaoNumero.ehPar(impar2));
+        Assertions.assertFalse(operacaoNumero.ehPar(impar3));
+    }
 }
