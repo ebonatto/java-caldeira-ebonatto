@@ -99,5 +99,36 @@ public class OperacaoNumeroTest {
         Assertions.assertEquals(1, operacaoNumero.calcularFatorial(0));
     }
 
+    @Test
+    void ehPalindromoTrue() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
 
+        String str1 = "arara";
+        String str2 = "Ame o poema";
+        String str3 = "amor a Roma";
+
+        Assertions.assertTrue(operacaoNumero.ehPalindromo(str1));
+        Assertions.assertTrue(operacaoNumero.ehPalindromo(str2));
+        Assertions.assertTrue(operacaoNumero.ehPalindromo(str3));
+    }
+
+    @Test
+    void ehPalindromoFalse() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        String str1 = "Eduardo";
+        String str2 = "Bonatto";
+        String str3 = "Costa";
+
+        Assertions.assertFalse(operacaoNumero.ehPalindromo(str1));
+        Assertions.assertFalse(operacaoNumero.ehPalindromo(str2));
+        Assertions.assertFalse(operacaoNumero.ehPalindromo(str3));
+    }
+
+    @Test
+    void ehPalindromoVazio() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+
+        Assertions.assertTrue(operacaoNumero.ehPalindromo(""));
+    }
 }
