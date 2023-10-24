@@ -33,4 +33,14 @@ public class OperacaoNumeroTest {
         Assertions.assertEquals(-135, soma2);
         Assertions.assertEquals(-4, soma3);
     }
+
+
+    @Test
+    void somaNumerosVazio() {
+        OperacaoNumero operacaoNumero = new OperacaoNumero();
+        int[] nVazio = {};
+        int soma = operacaoNumero.somarNumeros(nVazio);
+
+        Assertions.assertEquals(0, soma);
+    }
 }
