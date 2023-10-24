@@ -22,12 +22,12 @@ public class OperacaoNumeroTest {
     @Test
     void somaNumerosNegativos() {
         OperacaoNumero operacaoNumero = new OperacaoNumero();
-        int[] nPositivos1 = {-1,-3,-5,-7};
-        int soma1 = operacaoNumero.somarNumeros(nPositivos1);
-        int[] nPositivos2 = {-15,-20,-100};
-        int soma2 = operacaoNumero.somarNumeros(nPositivos2);
-        int[] nPositivos3 = {-1,-1,-1,-1};
-        int soma3 = operacaoNumero.somarNumeros(nPositivos3);
+        int[] nNegativos1 = {-1,-3,-5,-7};
+        int soma1 = operacaoNumero.somarNumeros(nNegativos1);
+        int[] nNegativos2 = {-15,-20,-100};
+        int soma2 = operacaoNumero.somarNumeros(nNegativos2);
+        int[] nNegativos3 = {-1,-1,-1,-1};
+        int soma3 = operacaoNumero.somarNumeros(nNegativos3);
 
         Assertions.assertEquals(-16, soma1);
         Assertions.assertEquals(-135, soma2);
